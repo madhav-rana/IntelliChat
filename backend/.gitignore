@@ -3,3 +3,8 @@ node_modules/
 
 # Environment variables
 .env
+
+demo_app.js
+demo1_app.js
+
+rough.txt
