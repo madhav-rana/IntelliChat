@@ -15,7 +15,7 @@ const Register = () => {
     setError("");
     setLoading(true);
     try {
-      const { data } = await API.post("/auth/register", form);
+      const { data } = await API.post("/api/auth/register", form);
       login(data.user, data.token);
       navigate("/chat");
     } catch (err) {

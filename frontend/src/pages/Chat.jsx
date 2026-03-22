@@ -16,13 +16,13 @@ const Chat = () => {
   }, []);
 
   const fetchConversations = async () => {
-    const { data } = await API.get("/conversations");
+    const { data } = await API.get("/api/conversations");
     setConversations(data);
   };
 
   const handleSelect = async (id) => {
     setActiveId(id);
-    const { data } = await API.get(`/conversations/${id}/messages`);
+    const { data } = await API.get(`/api/conversations/${id}/messages`);
     setMessages(data);
   };
 
@@ -32,7 +32,7 @@ const Chat = () => {
   };
 
   const handleDelete = async (id) => {
-    await API.delete(`/conversations/${id}`);
+    await API.delete(`/api/conversations/${id}`);
     if (activeId === id) handleNew();
     fetchConversations();
   };
@@ -40,7 +40,7 @@ const Chat = () => {
   const handleRename = async (id) => {
     const title = prompt("Enter new name:");
     if (!title) return;
-    await API.patch(`/conversations/${id}/rename`, { title });
+    await API.patch(`/api/conversations/${id}/rename`, { title });
     fetchConversations();
   };
 

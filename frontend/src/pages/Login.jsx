@@ -15,7 +15,7 @@ const Login = () => {
     setError("");
     setLoading(true);
     try {
-      const { data } = await API.post("/auth/login", form);
+      const { data } = await API.post("/api/auth/login", form);
       login(data.user, data.token);
       navigate("/chat");
     } catch (err) {
