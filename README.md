@@ -1,6 +1,6 @@
-# MyGPT 🤖
+# IntelliChat 🤖
 
-> A full-stack AI chat application built with the MERN stack, powered by Groq API (Llama 3)
+> A full-stack AI chat application built with the MERN stack, powered by Groq API
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
@@ -12,7 +12,7 @@
 
 ## Overview
 
-MyGPT is a full-stack AI-powered chat application inspired by ChatGPT. Users can register, log in, and have intelligent conversations powered by the Groq API (Llama 3). All conversations are saved to MongoDB, allowing users to revisit and continue past chats anytime.
+IntelliChat is a full-stack AI-powered chat application inspired by ChatGPT. Users can register, log in, and have intelligent conversations powered by the Groq API. All conversations are saved to MongoDB, allowing users to revisit and continue past chats anytime.
 
 ---
 
@@ -23,7 +23,7 @@ MyGPT is a full-stack AI-powered chat application inspired by ChatGPT. Users can
 - 💾 Persistent chat history saved per user in MongoDB
 - 📋 Sidebar with all past conversations
 - ✏️ Rename and delete conversations
-- 🛡️ Rate limiting to protect API usage
+<!-- - 🛡️ Rate limiting to protect API usage -->
 - 🎨 Responsive dark-themed UI built with Bootstrap
 - 🔒 Protected routes — only logged-in users can chat
 - 🚫 404 Not Found page
@@ -50,14 +50,14 @@ MyGPT is a full-stack AI-powered chat application inspired by ChatGPT. Users can
 | JWT (jsonwebtoken) | Authentication tokens |
 | bcryptjs | Password hashing |
 | Groq SDK | AI API integration |
-| express-rate-limit | Rate limiting |
+<!-- | express-rate-limit | Rate limiting | -->
 
 ---
 
 ## Project Structure
 
 ```
-mygpt/
+intellichat/
 ├── backend/
 │   ├── controllers/
 │   │   ├── auth.controller.js
@@ -67,14 +67,15 @@ mygpt/
 │   │   ├── auth.middleware.js
 │   │   └── rateLimiter.middleware.js
 │   ├── models/
-│   │   ├── User.js
-│   │   ├── Conversation.js
-│   │   └── Message.js
+│   │   ├── user.model.js
+│   │   ├── conversation.model.js
+│   │   └── message.model.js
 │   ├── routes/
 │   │   ├── auth.routes.js
 │   │   ├── chat.routes.js
 │   │   └── conversation.routes.js
 │   ├── utils/
+│   │   ├── connectToDb.js
 │   │   ├── hash.js
 │   │   ├── jwt.js
 │   │   └── generateTitle.js
@@ -97,6 +98,8 @@ mygpt/
         │   ├── Chat.jsx
         │   └── NotFound.jsx
         ├── App.jsx
+        ├── App.css
+        └── index.css
         └── main.jsx
 ```
 
@@ -115,8 +118,8 @@ mygpt/
 #### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/mygpt.git
-cd mygpt
+git clone https://github.com/madhav-rana/IntelliChat.git
+cd IntelliChat
 ```
 
 #### 2. Setup Backend
@@ -132,14 +135,14 @@ Create a `.env` file inside the `backend` folder:
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_super_secret_key
 GROQ_API_KEY=your_groq_api_key
-CLIENT_URL=http://localhost:5173
-PORT=5000
+<!-- CLIENT_URL=http://localhost:5173 -->
+<!-- PORT=5000 -->
 ```
 
 Start the backend server:
 
 ```bash
-npm run dev
+npm start
 ```
 
 #### 3. Setup Frontend
@@ -152,7 +155,7 @@ npm install
 Create a `.env` file inside the `frontend` folder:
 
 ```env
-VITE_API_URL=http://localhost:5000/api
+VITE_API_URL=http://localhost:3000/api
 ```
 
 Start the frontend:
@@ -201,8 +204,8 @@ The app will be running at **http://localhost:5173** 🚀
 | `MONGO_URI` | MongoDB connection string from Atlas |
 | `JWT_SECRET` | Secret key for signing JWT tokens |
 | `GROQ_API_KEY` | API key from console.groq.com |
-| `CLIENT_URL` | Frontend URL for CORS |
-| `PORT` | Port for Express server (default: 5000) |
+<!-- | `CLIENT_URL` | Frontend URL for CORS | -->
+<!-- | `PORT` | Port for Express server (default: 5000) | -->
 
 ### Frontend
 
@@ -221,7 +224,7 @@ React frontend sends POST /api/chat
       ↓
 Express verifies JWT token
       ↓
-Rate limiter checks request count
+<!-- Rate limiter checks request count -->
       ↓
 Message saved to MongoDB
       ↓
@@ -236,10 +239,10 @@ Final response saved to MongoDB
 
 ---
 
-## License
+<!-- ## License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source and available under the [MIT License](LICENSE). -->
 
 ---
 
-<p align="center">Built with ❤️ by a MERN Stack Developer</p>
+<p align="center">Built with ❤️ by a MADHAV SINGH RANA</p>
