@@ -12,7 +12,11 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Middlewares
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: "https://intellichat-4.onrender.com", // or your frontend URL
+  credentials: true
+}));
 app.use(express.json());
 
 // Home route
