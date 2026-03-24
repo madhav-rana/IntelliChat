@@ -79,28 +79,43 @@ intellichat/
 │   │   ├── hash.js
 │   │   ├── jwt.js
 │   │   └── generateTitle.js
-│   └── app.js
+│   ├── app.js
+│   ├── .env
+│   ├── .gitignore
+│   ├── package.json
+│   └── package-lock.json
 │
-└── frontend/
-    └── src/
-        ├── api/
-        │   └── axios.js
-        ├── context/
-        │   └── AuthContext.jsx
-        ├── components/
-        │   ├── Sidebar.jsx
-        │   ├── ChatWindow.jsx
-        │   ├── MessageBubble.jsx
-        │   └── ProtectedRoute.jsx
-        ├── pages/
-        │   ├── Login.jsx
-        │   ├── Register.jsx
-        │   ├── Chat.jsx
-        │   └── NotFound.jsx
-        ├── App.jsx
-        ├── App.css
-        └── index.css
-        └── main.jsx
+├── frontend/
+│   ├── node_modules/
+│   ├── public/
+│   ├── src/
+│   │   ├── api/
+│   │   │   └── axios.js
+│   │   ├── context/
+│   │   │   └── AuthContext.jsx
+│   │   ├── components/
+│   │   │   ├── Sidebar.jsx
+│   │   │   ├── ChatWindow.jsx
+│   │   │   ├── MessageBubble.jsx
+│   │   │   └── ProtectedRoute.jsx
+│   │   ├── pages/
+│   │   │   ├── Login.jsx
+│   │   │   ├── Register.jsx
+│   │   │   ├── Chat.jsx
+│   │   │   └── NotFound.jsx
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   ├── index.css
+│   │   └── main.jsx
+│   ├── .env
+│   ├── .gitignore
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── vite.config.js
+│   └── eslint.config.js
+│
+└── README.md
 ```
 
 ---
