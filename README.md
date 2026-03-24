@@ -23,7 +23,7 @@ IntelliChat is a full-stack AI-powered chat application inspired by ChatGPT. Use
 - 💾 Persistent chat history saved per user in MongoDB
 - 📋 Sidebar with all past conversations
 - ✏️ Rename and delete conversations
-<!-- - 🛡️ Rate limiting to protect API usage -->
+- 🛡️ Rate limiting to protect API usage
 - 🎨 Responsive dark-themed UI built with Bootstrap
 - 🔒 Protected routes — only logged-in users can chat
 - 🚫 404 Not Found page
@@ -50,7 +50,7 @@ IntelliChat is a full-stack AI-powered chat application inspired by ChatGPT. Use
 | JWT (jsonwebtoken) | Authentication tokens |
 | bcryptjs | Password hashing |
 | Groq SDK | AI API integration |
-<!-- | express-rate-limit | Rate limiting | -->
+| express-rate-limit | Rate limiting |
 
 ---
 
@@ -135,9 +135,9 @@ Create a `.env` file inside the `backend` folder:
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_super_secret_key
 GROQ_API_KEY=your_groq_api_key
+```
 <!-- CLIENT_URL=http://localhost:5173 -->
 <!-- PORT=5000 -->
-```
 
 Start the backend server:
 
@@ -224,7 +224,7 @@ React frontend sends POST /api/chat
       ↓
 Express verifies JWT token
       ↓
-<!-- Rate limiter checks request count -->
+Rate limiter checks request count
       ↓
 Message saved to MongoDB
       ↓
@@ -237,7 +237,7 @@ Frontend displays response in real time
 Final response saved to MongoDB
 ```
 
----
+<!-- --- -->
 
 <!-- ## License
 
