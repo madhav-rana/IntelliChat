@@ -88,7 +88,7 @@ import { generateTitle } from "../utils/generateTitle.js";
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
-// 🔢 Token estimation (rough)
+// Token estimation (rough)
 function estimateTokens(text) {
   return Math.ceil(text.length / 4);
 }
@@ -102,7 +102,7 @@ export const sendMessage = async (req, res, next) => {
       // model = "llama-3.1-8b-instant"
     } = req.body;
 
-    // 🧠 Get or create conversation
+    // Get or create conversation
     let conversation;
     if (conversationId) {
       conversation = await Conversation.findById(conversationId);
@@ -115,19 +115,19 @@ export const sendMessage = async (req, res, next) => {
       });
     }
 
-    // 💾 Save user message
+    // Save user message
     await Message.create({
       conversationId: conversation._id,
       role: "user",
       content: message
     });
 
-    // 📜 Fetch history
+    // Fetch history
     const history = await Message.find({
       conversationId: conversation._id
     }).sort({ createdAt: 1 });
 
-    // ✂️ Smart trim history (token-based)
+    // Smart trim history (token-based)
     let totalTokens = 0;
     const MAX_INPUT_TOKENS = 6000;
 
@@ -143,7 +143,7 @@ export const sendMessage = async (req, res, next) => {
       totalTokens += tokens;
     }
 
-    // 🧠 System prompt (for beautiful formatting)
+    // System prompt (for beautiful formatting)
     const systemPrompt = {
       role: "system",
       content: `
@@ -167,7 +167,7 @@ Follow these rules strictly:
       }))
     ];
 
-    // 🎯 Dynamic max_tokens
+    // Dynamic max_tokens
     const MODEL_LIMIT = 8192;
     const SAFE_BUFFER = 500;
 
@@ -181,7 +181,7 @@ Follow these rules strictly:
     res.setHeader("Cache-Control", "no-cache");
     res.setHeader("Connection", "keep-alive");
 
-    // 🚀 Start streaming
+    // Start streaming
     const stream = await groq.chat.completions.create({
       model,
       messages,
@@ -191,7 +191,7 @@ Follow these rules strictly:
 
     let fullResponse = "";
 
-    // 🔄 Stream chunks
+    // Stream chunks
     for await (const chunk of stream) {
       const content = chunk.choices[0]?.delta?.content || "";
 
@@ -207,14 +207,14 @@ Follow these rules strictly:
       );
     }
 
-    // 💾 Save assistant response
+    // Save assistant response
     await Message.create({
       conversationId: conversation._id,
       role: "assistant",
       content: fullResponse
     });
 
-    // ✅ End stream
+    // End stream
     res.write(
       `data: ${JSON.stringify({
         done: true,

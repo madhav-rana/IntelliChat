@@ -9,6 +9,7 @@ const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [streaming, setStreaming] = useState(false);
+  const [error, setError] = useState("");
 
   // Fetch conversations on mount
   useEffect(() => {
@@ -51,6 +52,7 @@ const Chat = () => {
     setInput("");
     setMessages((prev) => [...prev, { role: "user", content: userMessage }]);
     setStreaming(true);
+    setError("");
 
     try {
       const token = localStorage.getItem("token");
@@ -68,7 +70,12 @@ const Chat = () => {
           })
         }
       );
-
+      if (response.status === 429) {
+            setError("⚠️ Too many messages! Please wait a moment before sending again.");
+            setMessages((prev) => prev.slice(0, -1)); // remove the user message
+            setStreaming(false);
+            return;
+       }
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let assistantMessage = "";
@@ -104,6 +111,7 @@ const Chat = () => {
         }
       }
     } catch (err) {
+      setError("Something went wrong. Please try again.");
       console.error("Stream error:", err);
     } finally {
       setStreaming(false);
@@ -129,6 +137,18 @@ const Chat = () => {
       />
       <div className="chat-area">
         <ChatWindow messages={messages} streaming={streaming} />
+        {error && (
+            <div
+                className="alert alert-warning mx-4 mb-0 py-2 d-flex justify-content-between align-items-center"
+                style={{ fontSize: 14 }}
+            >
+                <span>{error}</span>
+                <button
+                className="btn-close btn-close-white btn-sm"
+                onClick={() => setError("")}
+                />
+            </div>
+        )}
         <div className="input-area">
           <div className="d-flex gap-2">
             <textarea
