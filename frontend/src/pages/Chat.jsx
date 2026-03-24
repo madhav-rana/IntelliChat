@@ -153,7 +153,7 @@ const Chat = () => {
           <div className="d-flex gap-2">
             <textarea
               rows={1}
-              placeholder="Message MyGPT..."
+              placeholder="Ask anything..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}

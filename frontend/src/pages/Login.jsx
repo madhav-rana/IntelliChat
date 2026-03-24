@@ -28,7 +28,7 @@ const Login = () => {
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
       <div className="card p-4 shadow" style={{ width: 400, backgroundColor: "#16213e", border: "1px solid #0f3460" }}>
-        <h4 className="text-center text-white mb-4">Welcome to MyGPT</h4>
+        <h4 className="text-center text-white mb-4">Welcome to IntelliChat</h4>
         {error && <div className="alert alert-danger py-2">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
